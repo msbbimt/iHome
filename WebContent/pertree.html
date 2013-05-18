@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+	<meta charset="utf-8">
+	<title>Demo: dojox/grid/DataGrid Simple Structure</title>
+	<style type="text/css">
+      @import "lib/dojo/dijit/themes/claro/claro.css";
+      @import "lib/dojo/dijit/themes/claro/document.css";
+      @import "lib/dojo/cbtree/themes/claro/claro.css";
+	</style>
+	</head>
+	<body class="claro">
+		<h1>Demo: Cbtree</h1>
+
+		<br/>
+		<div id="tree"></div>
+
+		<!-- load dojo and provide config via data attribute -->
+		<script> 
+			<!-- dojoConfig -->
+			var dojoConfig = {
+					async: true,
+					parseOnLoad: true,//加载完成后自动解析
+					baseUrl: "./lib/",
+					packages: [{
+						name: "custom",
+						location: "dojo/custom",
+					},{
+						name: "dojo",
+						location: "dojo/dojo"
+					},{
+						name: "dijit",
+						location: "dojo/dijit"
+					}, {
+						name: "dojox",
+						location: "dojo/dojox"
+					}, {
+						name: "dgrid",
+						location: "dojo/dgrid"
+					}, {
+						name: "put-selector",
+						location: "dojo/put-selector"
+					}, {
+						name: "xstyle",
+						location: "dojo/xstyle"
+					},{
+						name: "cbtree",
+						location: "dojo/cbtree"
+					}]
+			}
+		</script>		
+		<script src="lib/dojo/dojo/dojo.js"></script>
+		<script>
+			var grid, dataStore, store;
+			require([
+				"dojo/request",
+		        "dojo/data/ItemFileWriteStore",
+		        "cbtree/Tree",                    // Checkbox tree
+		        "cbtree/models/ForestStoreModel",  // ForestStoreModel
+				"dojo/domReady!"
+			], function(request, ItemFileWriteStore, Tree, ForestStoreModel){
+				request.post("/iHome/permissons", {
+					handleAs: "json"
+				}).then(function(res){
+					 var data = { "identifier": "id", 
+	                         "label": "name",  
+	                         "items": res
+	                      };
+
+	          		var store = new ItemFileWriteStore( { data: data });
+	          		var model = new ForestStoreModel( { store: store, 
+	                                              // query: {type: "continent"}, 
+	                                               rootLabel: "User Root" 
+	                                             }); 
+	            	var tree = new Tree( { model: model, id: "userTree", showRoot: false }, "tree" );
+	            	tree.startup();
+				});
+			});
+		</script>
+	</body>
+</html>

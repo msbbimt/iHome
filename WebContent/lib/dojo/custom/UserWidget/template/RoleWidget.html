@@ -1,0 +1,22 @@
+<div style="height: 100%">
+	<div data-dojo-attach-point="userPane" data-dojo-type="dijit.layout.BorderContainer" design="sidebar" persist="false" gutters="true" style="min-width: 1em; min-height: 1px; z-index: 0; width: 100%; height: 100%;">
+		<div data-dojo-type="dijit.layout.ContentPane" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="left" splitter="true" maxSize="Infinity" style="width: 400px; padding:0" doLayout="false">
+			<span data-dojo-type="dijit.Toolbar">
+				<input type="button" data-dojo-type="dijit.form.Button" data-dojo-attach-event="onClick:_show" tabIndex="-1" intermediateChanges="false" label="SelectAll" iconClass="dijitNoIcon"></input>
+				<input type="button" data-dojo-attach-event="onClick:_deleteSelected" data-dojo-type="dijit.form.Button" tabIndex="-1" intermediateChanges="false" label="Delete" iconClass="dijitNoIcon"></input>
+			</span>			
+			<div data-dojo-attach-point="_grid" style="height:94%"></div>   	 
+		</div>
+		<div data-dojo-type="dijit.layout.ContentPane" class="zeropadding" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" region="center" splitter="false" maxSize="Infinity" doLayout="false">
+			<span data-dojo-type="dijit.TitlePane" data-dojo-attach-point="role" title="角色" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" duration="200" open="true" style="min-width: 1em; width: 100%; height: auto;">
+				<span data-dojo-type="dijit.Toolbar">
+					<input type="button" data-dojo-attach-point="editRole" data-dojo-type="dijit.form.Button" data-dojo-attach-event="onClick:_editRole" label="修改角色"></input>
+					<input type="button" data-dojo-attach-point="saveRole" data-dojo-type="dijit.form.Button" data-dojo-props="disabled: true" data-dojo-attach-event="onClick:_saveRole" label="保存"></input>
+					<input type="button" data-dojo-attach-point="cancleRole" data-dojo-type="dijit.form.Button" data-dojo-props="disabled: true" data-dojo-attach-event="onClick:_cancleRole" label="取消"></input>
+				</span>
+			</span>
+			<span data-dojo-type="dijit.TitlePane" title="基本信息" extractContent="false" preventCache="false" preload="false" refreshOnShow="false" duration="200" open="true" style="min-width: 1em; width: 100%; height: auto;">
+			</span>
+		</div>
+	</div>
+</div>

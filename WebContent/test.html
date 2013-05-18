@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Demo: UserWidget</title>
+		<style>
+			@import "themes/claro/document.css";
+			@import "themes/claro/claro.css";
+			@import "app.css";
+		</style>
+		<script> 
+			<!-- dojoConfig -->
+			var dojoConfig = {
+					async: true,
+					parseOnLoad: false,//加载完成后自动解析
+					baseUrl: "./lib/",
+					packages: [{
+						name: "custom",
+						location: "dojo/custom",
+					},{
+						name: "dojo",
+						location: "dojo/dojo"
+					},{
+						name: "dijit",
+						location: "dojo/dijit"
+					}, {
+						name: "dojox",
+						location: "dojo/dojox"
+					}, {
+						name: "dgrid",
+						location: "dojo/dgrid"
+					}, {
+						name: "put-selector",
+						location: "dojo/put-selector"
+					}, {
+						name: "xstyle",
+						location: "dojo/xstyle"
+					}]
+			}
+		</script>
+	</head>
+	<body class="claro">
+		<div data-dojo-type="custom/UserWidget"></div>
+		<!-- load dojo and provide config via data attribute -->
+		<div id="kk" style="height:100%"></div>
+		<script src="lib/dojo/dojo/dojo.js"></script>
+		<script>
+			require([
+			        "dojo/_base/declare",
+			        "dojo/parser",
+			        "dijit/layout/ContentPane",
+			        "custom/UserWidget",
+			        "custom/HomeGrid",
+			        "dgrid/OnDemandGrid",
+			        "dgrid/Selection",
+			        "dgrid/selector",
+			        "dojo/store/JsonRest",
+			        "dojo/request",
+			        "dojox/form/Manager",
+					"dojo/domReady!"
+				], 
+			function(declare, parser, ContentPane, UserWidget,HomeGrid, OnDemandGrid, Selection, selector, JsonRest, request){
+				parser.parse();
+				var content = new ContentPane({},"kk");
+				var user = new UserWidget({});
+				content.addChild(user);
+				user.startup();
+				contnet.startup();
+			});
+		</script>
+	</body>
+</html>

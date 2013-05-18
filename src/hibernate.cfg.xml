@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<!-- 项目已经集成到了Spring，所以这里的配置其实是不用的。只是可以留着先。 -->
+<hibernate-configuration>
+	<session-factory>
+		<!-- Database connection settings -->
+		<!-- JDBC connection pool (use the built-in) -->
+		<property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
+		<property name="connection.url">jdbc:hsqldb:hsql://localhost</property>
+		<property name="connection.username">sa</property>
+		<property name="connection.password"></property>
+		<property name="connection.pool_size">1</property>
+		<!-- SQL dialect -->
+		<property name="dialect">org.hibernate.dialect.HSQLDialect</property>
+		<!-- Enable Hibernate's automatic session context management -->
+		<property name="current_session_context_class">thread</property>
+		<!-- Disable the second-level cache -->
+		<property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+		<!-- Echo all executed SQL to stdout -->
+		<property name="show_sql">true</property>
+		<!-- 测试的时候用，表示每次启动都会把数据库清空 -->
+		<property name="hbm2ddl.auto">create-drop</property>
+		<!-- 实体，这个不给力，每个都要写一个class -->
+		<mapping class="com.ihome.entity.UserAccount"/>
+	</session-factory>
+</hibernate-configuration>

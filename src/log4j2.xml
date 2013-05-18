@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="warn" name="iHome" packages="">
+    <appenders>
+        <RollingFile name="RollingFile" fileName="logs/log.log" filePattern="logs/$${date:yyyy-MM}/log-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <pattern>%d [%p][%t][%c{1.}.%M] - %m%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="250 MB" />
+            </Policies>
+        </RollingFile>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%m%n" />
+        </Console>
+    </appenders>
+    <loggers>
+        <root level="debug">
+            <appender-ref ref="RollingFile" />
+            <appender-ref ref="Console" />
+        </root>
+    </loggers>
+</configuration>
